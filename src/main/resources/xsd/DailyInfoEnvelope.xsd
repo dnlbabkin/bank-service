@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:schema
+        xmlns:tns="http://web.cbr.ru/"
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+        attributeFormDefault="unqualified"
+        elementFormDefault="qualified"
+        targetNamespace="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:s="http://www.w3.org/2001/XMLSchema">
+    <s:import schemaLocation="DailyInfo.xsd" namespace="http://web.cbr.ru/"/>
+    <s:element name="Envelope">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="Header"/>
+                <s:element name="Body">
+                    <s:complexType>
+                        <s:sequence>
+                            <s:element ref="tns:AllDataInfoXML"/>
+                            <s:element ref="tns:AllDataInfoXMLResponse"/>
+                        </s:sequence>
+                    </s:complexType>
+                </s:element>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+</s:schema>

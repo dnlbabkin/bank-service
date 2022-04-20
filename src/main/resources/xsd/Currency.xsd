@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:schema
+        attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:s="http://www.w3.org/2001/XMLSchema">
+    <s:element name="AllData">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="MainIndicatorsVR">
+                    <s:complexType>
+                        <s:sequence>
+                            <s:element name="Currency">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="USD">
+                                            <s:complexType>
+                                                <s:sequence>
+                                                    <s:element name="curs" type="s:decimal" />
+                                                </s:sequence>
+                                                <s:attribute name="OnDate" type="s:string" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="EUR">
+                                            <s:complexType>
+                                                <s:sequence>
+                                                    <s:element name="curs" type="s:decimal" />
+                                                </s:sequence>
+                                                <s:attribute name="OnDate" type="s:string" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="Metall">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="Золото">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                                <s:attribute name="old_val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="Серебро">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                                <s:attribute name="old_val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="Платина">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                                <s:attribute name="old_val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="Палладий">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                                <s:attribute name="old_val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="Inflation">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="InflationTarget">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="MBK">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="MIBID">
+                                            <s:complexType>
+                                                <s:sequence>
+                                                    <s:element name="D1">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:decimal" use="required" />
+                                                            <s:attribute name="old_val" type="s:decimal" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                    <s:element name="D2_7">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:decimal" use="required" />
+                                                            <s:attribute name="old_val" type="s:decimal" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                    <s:element name="D8_30">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:decimal" use="required" />
+                                                            <s:attribute name="old_val" type="s:decimal" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                </s:sequence>
+                                                <s:attribute name="OnDate" type="s:string" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="MIBOR">
+                                            <s:complexType>
+                                                <s:sequence>
+                                                    <s:element name="D1">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:decimal" use="required" />
+                                                            <s:attribute name="old_val" type="s:decimal" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                    <s:element name="D2_7">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:decimal" use="required" />
+                                                            <s:attribute name="old_val" type="s:decimal" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                    <s:element name="D8_30">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:decimal" use="required" />
+                                                            <s:attribute name="old_val" type="s:decimal" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                </s:sequence>
+                                                <s:attribute name="OnDate" type="s:string" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="MIACR">
+                                            <s:complexType>
+                                                <s:sequence>
+                                                    <s:element name="D1">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:decimal" use="required" />
+                                                            <s:attribute name="old_val" type="s:decimal" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                    <s:element name="D2_7">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:string" use="required" />
+                                                            <s:attribute name="old_val" type="s:decimal" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                    <s:element name="D8_30">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:string" use="required" />
+                                                            <s:attribute name="old_val" type="s:string" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                </s:sequence>
+                                                <s:attribute name="OnDate" type="s:string" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="MIACR-IG">
+                                            <s:complexType>
+                                                <s:sequence>
+                                                    <s:element name="D1">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:decimal" use="required" />
+                                                            <s:attribute name="old_val" type="s:decimal" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                    <s:element name="D2_7">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:string" use="required" />
+                                                            <s:attribute name="old_val" type="s:string" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                    <s:element name="D8_30">
+                                                        <s:complexType>
+                                                            <s:attribute name="val" type="s:string" use="required" />
+                                                            <s:attribute name="old_val" type="s:string" use="required" />
+                                                        </s:complexType>
+                                                    </s:element>
+                                                </s:sequence>
+                                                <s:attribute name="OnDate" type="s:string" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="MosPrime">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="D1">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:string" use="required" />
+                                                <s:attribute name="old_val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="M1">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:string" use="required" />
+                                                <s:attribute name="old_val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="M3">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:string" use="required" />
+                                                <s:attribute name="old_val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                        </s:sequence>
+                        <s:attribute name="Title" type="s:string" use="required" />
+                    </s:complexType>
+                </s:element>
+                <s:element name="KEY_RATE">
+                    <s:complexType>
+                        <s:attribute name="Title" type="s:string" use="required" />
+                        <s:attribute name="val" type="s:decimal" use="required" />
+                        <s:attribute name="date" type="s:string" use="required" />
+                    </s:complexType>
+                </s:element>
+                <s:element name="KEY_RATE_FUTURE">
+                    <s:complexType>
+                        <s:attribute name="Title" type="s:string" use="required" />
+                        <s:attribute name="val" type="s:decimal" use="required" />
+                        <s:attribute name="newdate" type="s:string" use="required" />
+                    </s:complexType>
+                </s:element>
+                <s:element name="REF_RATE">
+                    <s:complexType>
+                        <s:attribute name="Title" type="s:string" use="required" />
+                        <s:attribute name="val" type="s:decimal" use="required" />
+                    </s:complexType>
+                </s:element>
+                <s:element name="MBRStavki">
+                    <s:complexType>
+                        <s:sequence>
+                            <s:element name="Overnight_rate">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="Val1">
+                                            <s:complexType>
+                                                <s:attribute name="Date" type="s:string" use="required" />
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="Val2">
+                                            <s:complexType>
+                                                <s:attribute name="Date" type="s:string" use="required" />
+                                                <s:attribute name="val" type="s:unsignedByte" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="FixedLomb">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="D30">
+                                            <s:complexType>
+                                                <s:attribute name="Date" type="s:string" use="required" />
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="D7">
+                                            <s:complexType>
+                                                <s:attribute name="Date" type="s:string" use="required" />
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="D1">
+                                            <s:complexType>
+                                                <s:attribute name="Date" type="s:string" use="required" />
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="DepoRates">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="TomNext">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:string" use="required" />
+                                                <s:attribute name="old_val" type="s:string" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="SpotNext">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:string" use="required" />
+                                                <s:attribute name="old_val" type="s:string" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="W1">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:string" use="required" />
+                                                <s:attribute name="old_val" type="s:string" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="W1_SPOT">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:string" use="required" />
+                                                <s:attribute name="old_val" type="s:string" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="CallDeposit">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:string" use="required" />
+                                                <s:attribute name="old_val" type="s:string" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="SWAP">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="USD_RUB">
+                                            <s:complexType>
+                                                <s:attribute name="LUpd" type="s:string" use="required" />
+                                                <s:attribute name="val" type="s:string" use="required" />
+                                                <s:attribute name="old_val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="EUR_RUB">
+                                            <s:complexType>
+                                                <s:attribute name="LUpd" type="s:string" use="required" />
+                                                <s:attribute name="val" type="s:string" use="required" />
+                                                <s:attribute name="old_val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="FixedRepoRate">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="D1">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:unsignedByte" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="D7">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:unsignedByte" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="MinimalRepoRates">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="D1">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:unsignedByte" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="D7">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:unsignedByte" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="MaxVolRepoOnAuction">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:unsignedByte" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="MaxVolSwap">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:unsignedShort" use="required" />
+                                </s:complexType>
+                            </s:element>
+                        </s:sequence>
+                        <s:attribute name="Title" type="s:string" use="required" />
+                    </s:complexType>
+                </s:element>
+                <s:element name="Ko">
+                    <s:complexType>
+                        <s:sequence>
+                            <s:element name="OnOvernightCredit">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                    <s:attribute name="old_val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="OnLombardCredit">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                    <s:attribute name="old_val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="OnOtherCredit">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                    <s:attribute name="old_val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="OnDirectRepo">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="OnAuction">
+                                            <s:complexType>
+                                                <s:attribute name="Title" type="s:string" use="required" />
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="OnFixed">
+                                            <s:complexType>
+                                                <s:attribute name="Title" type="s:string" use="required" />
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="UnsecLoans">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:unsignedByte" use="required" />
+                                    <s:attribute name="old_val" type="s:unsignedByte" use="required" />
+                                </s:complexType>
+                            </s:element>
+                        </s:sequence>
+                        <s:attribute name="Title" type="s:string" use="required" />
+                    </s:complexType>
+                </s:element>
+                <s:element name="BankLikvid">
+                    <s:complexType>
+                        <s:sequence>
+                            <s:element name="OstatKO">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="Russ">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                                <s:attribute name="old_val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="Msk">
+                                            <s:complexType>
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                                <s:attribute name="old_val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="InDCredit">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                    <s:attribute name="old_val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="DepoBR">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                    <s:attribute name="old_val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="Saldo">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="LUpd" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                    <s:attribute name="old_val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="VolOBR">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:unsignedByte" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="VolDepo">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="OnDate" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:unsignedByte" use="required" />
+                                </s:complexType>
+                            </s:element>
+                        </s:sequence>
+                        <s:attribute name="Title" type="s:string" use="required" />
+                    </s:complexType>
+                </s:element>
+                <s:element name="Nor">
+                    <s:complexType>
+                        <s:sequence>
+                            <s:element name="Ob_1">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="Ob_1_1">
+                                            <s:complexType>
+                                                <s:attribute name="Title" type="s:string" use="required" />
+                                                <s:attribute name="val_rub" type="s:decimal" use="required" />
+                                                <s:attribute name="val_usd" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="Ob_1_2">
+                                            <s:complexType>
+                                                <s:attribute name="Title" type="s:string" use="required" />
+                                                <s:attribute name="val_rub" type="s:decimal" use="required" />
+                                                <s:attribute name="val_usd" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="Ob_2">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="val_rub" type="s:decimal" use="required" />
+                                    <s:attribute name="val_usd" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="Ob_3">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="Ob_3_1">
+                                            <s:complexType>
+                                                <s:attribute name="Title" type="s:string" use="required" />
+                                                <s:attribute name="val_rub" type="s:decimal" use="required" />
+                                                <s:attribute name="val_usd" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="Ob_3_2">
+                                            <s:complexType>
+                                                <s:attribute name="Title" type="s:string" use="required" />
+                                                <s:attribute name="val_rub" type="s:decimal" use="required" />
+                                                <s:attribute name="val_usd" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="Kor">
+                                <s:complexType>
+                                    <s:sequence>
+                                        <s:element name="Ku_1">
+                                            <s:complexType>
+                                                <s:attribute name="Title" type="s:string" use="required" />
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                        <s:element name="Ku_2">
+                                            <s:complexType>
+                                                <s:attribute name="Title" type="s:string" use="required" />
+                                                <s:attribute name="val" type="s:decimal" use="required" />
+                                            </s:complexType>
+                                        </s:element>
+                                    </s:sequence>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="KK">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                        </s:sequence>
+                        <s:attribute name="Title" type="s:string" use="required" />
+                    </s:complexType>
+                </s:element>
+                <s:element name="Macro">
+                    <s:complexType>
+                        <s:sequence>
+                            <s:element name="DB">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="DM">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="M_rez">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                            <s:element name="Vol_GKO_OFZ">
+                                <s:complexType>
+                                    <s:attribute name="Title" type="s:string" use="required" />
+                                    <s:attribute name="val" type="s:decimal" use="required" />
+                                </s:complexType>
+                            </s:element>
+                        </s:sequence>
+                        <s:attribute name="Title" type="s:string" use="required" />
+                    </s:complexType>
+                </s:element>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+</s:schema>

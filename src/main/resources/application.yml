@@ -1,0 +1,38 @@
+spring.datasource:
+  url: jdbc:postgresql://localhost:5432/postgres
+  username: postgres
+  password: postgres
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+  application:
+    name: bankservice
+  main:
+    allow-bean-definition-overriding: true
+sample:
+  schedule:
+    string: PT60S
+initialdelay:
+  string: '1000'
+management:
+  server:
+    port: '8090'
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enable: true
+cbr:
+  url: 'http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx'
+personaccount:
+  url: 'http://localhost:8080/person-account/'
+card:
+  number:
+    id: '2212'
