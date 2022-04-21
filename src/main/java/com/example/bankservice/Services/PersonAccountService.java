@@ -77,4 +77,8 @@ public class PersonAccountService {
     public PersonAccount getAccountById(Long id) {
         return personAccountRepository.findAccountById(id);
     }
+
+    public PersonAccount getAccountByAccountNumber(String accountNumber) {
+        return personAccountRepository.findByAccountNumber(accountNumber);
+    }
 }

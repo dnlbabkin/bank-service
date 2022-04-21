@@ -8,9 +8,9 @@ import java.math.BigDecimal;
 @Value
 public class PersonAccountRequest {
 
-    @JsonProperty("initialCurrency")
+    @JsonProperty("currency")
     String initialCurrency;
 
-    @JsonProperty("initialPayment")
+    @JsonProperty("amount")
     BigDecimal initialPayment;
 }

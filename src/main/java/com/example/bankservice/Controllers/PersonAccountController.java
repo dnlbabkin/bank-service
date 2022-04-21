@@ -18,10 +18,8 @@ public class PersonAccountController {
 
 
     @PostMapping(value = "/")
-    public List<PersonAccount> setAccount(@RequestBody PersonAccountRequest account) throws JAXBException {
-        personAccountService.savePersonAccount(account);
-
-        return personAccountService.findAll();
+    public PersonAccount setAccount(@RequestBody PersonAccountRequest account) throws JAXBException {
+        return personAccountService.savePersonAccount(account);
     }
 
 
@@ -33,6 +31,11 @@ public class PersonAccountController {
     @GetMapping("/{id}")
     public PersonAccount getAccountById(@PathVariable("id") Long id) {
         return personAccountService.getAccountById(id);
+    }
+
+    @RequestMapping(value = "/account/{accountNumber}", method = RequestMethod.GET)
+    public PersonAccount findAccountByAccountNumber(@PathVariable("accountNumber") String accountNumber) {
+        return personAccountService.getAccountByAccountNumber(accountNumber);
     }
 }
  
