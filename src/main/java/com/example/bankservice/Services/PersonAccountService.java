@@ -7,7 +7,7 @@ import com.example.bankservice.DTO.PersonAccountRequest;
 import com.example.bankservice.DTO.PersonInfo;
 import com.example.bankservice.Entity.Person;
 import com.example.bankservice.Entity.PersonAccount;
-import com.example.bankservice.ExternalProperties;
+import com.example.bankservice.properties.ExternalProperties;
 import com.example.bankservice.Repository.PersonAccountRepository;
 import com.example.bankservice.Repository.PersonRepository;
 import lombok.RequiredArgsConstructor;

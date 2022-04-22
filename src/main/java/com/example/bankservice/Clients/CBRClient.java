@@ -3,7 +3,7 @@ package com.example.bankservice.Clients;
 import com.example.bankservice.AllData;
 import com.example.bankservice.AllDataInfoXML;
 import com.example.bankservice.Envelope;
-import com.example.bankservice.ExternalProperties;
+import com.example.bankservice.properties.ExternalProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
