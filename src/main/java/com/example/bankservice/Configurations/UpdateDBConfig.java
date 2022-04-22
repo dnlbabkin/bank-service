@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.xml.bind.JAXBException;
+import java.io.IOException;
 
 @Slf4j
 @EnableScheduling
@@ -22,7 +23,7 @@ public class UpdateDBConfig {
     private final CBRClient soapClient;
 
     @Scheduled(fixedRateString = "${sample.schedule.string}", initialDelayString = "${initialdelay.string}")
-    public void updateDataBase() throws JAXBException {
+    public void updateDataBase() throws JAXBException, IOException {
         Account account = new Account();
         AllData.MainIndicatorsVR envelope = soapClient.getCurrencyData();
 

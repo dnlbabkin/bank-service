@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.xml.bind.JAXBException;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -17,11 +18,10 @@ public class PersonAccountController {
     private final PersonAccountService personAccountService;
 
 
-    @PostMapping(value = "/")
-    public PersonAccount setAccount(@RequestBody PersonAccountRequest account) throws JAXBException {
+    @PostMapping("/")
+    public PersonAccount setAccount(@RequestBody PersonAccountRequest account) throws JAXBException, IOException {
         return personAccountService.savePersonAccount(account);
     }
-
 
     @GetMapping("all-accounts")
     public List<PersonAccount> getAllAccounts(){
@@ -33,7 +33,7 @@ public class PersonAccountController {
         return personAccountService.getAccountById(id);
     }
 
-    @RequestMapping(value = "/account/{accountNumber}", method = RequestMethod.GET)
+    @GetMapping("/account/{accountNumber}")
     public PersonAccount findAccountByAccountNumber(@PathVariable("accountNumber") String accountNumber) {
         return personAccountService.getAccountByAccountNumber(accountNumber);
     }

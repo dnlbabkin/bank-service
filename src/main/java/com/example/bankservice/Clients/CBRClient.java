@@ -10,10 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.Result;
+import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Collections;
@@ -24,6 +25,8 @@ import java.util.Map;
 public class CBRClient extends WebServiceGatewaySupport {
 
     private final RestTemplate restTemplate;
+    private final Marshaller marshaller;
+    private final Unmarshaller unmarshaller;
     private final ExternalProperties externalProperties;
 
     private HttpEntity<Map<String, Object>> makeEntity(String writer, HttpHeaders headers) {
@@ -34,18 +37,18 @@ public class CBRClient extends WebServiceGatewaySupport {
         return entity;
     }
 
-    private void makeMarshaller(Envelope envelope, StringWriter writer) throws JAXBException {
-        JAXBContext jaxbContext = JAXBContext.newInstance(Envelope.class);
-        Marshaller marshaller = jaxbContext.createMarshaller();
-        marshaller.marshal(envelope, writer);
-    }
+//    private void makeMarshaller(Envelope envelope, StringWriter writer) throws JAXBException {
+//        JAXBContext jaxbContext = JAXBContext.newInstance(Envelope.class);
+//        Marshaller marshaller = jaxbContext.createMarshaller();
+//        marshaller.marshal(envelope, writer);
+//    }
 
-    private Unmarshaller makeUnmarshaller() throws JAXBException {
-        JAXBContext context = JAXBContext.newInstance(Envelope.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-
-        return unmarshaller;
-    }
+//    private Unmarshaller makeUnmarshaller() throws JAXBException {
+//        JAXBContext context = JAXBContext.newInstance(Envelope.class);
+//        Unmarshaller unmarshaller = context.createUnmarshaller();
+//
+//        return unmarshaller;
+//    }
 
     private ResponseEntity<String> makeRequest(String writer, HttpHeaders headers){
         ResponseEntity<String> response = restTemplate
@@ -54,17 +57,17 @@ public class CBRClient extends WebServiceGatewaySupport {
         return response;
     }
 
-    public AllData.MainIndicatorsVR getCurrencyData() throws JAXBException {
+    public AllData.MainIndicatorsVR getCurrencyData() throws JAXBException, IOException {
         Envelope envelope = new Envelope();
         StringWriter writer = new StringWriter();
         HttpHeaders headers = new HttpHeaders();
 
         envelope.setBody(new Envelope.Body());
         envelope.getBody().setAllDataInfoXML(new AllDataInfoXML());
-        makeMarshaller(envelope, writer);
+        marshaller.marshal(envelope, writer);
 
         String responseXML = makeRequest(writer.toString(), headers).getBody();
-        Envelope dataInfoXMLResponse = (Envelope) makeUnmarshaller().unmarshal(new StringReader(responseXML));
+        Envelope dataInfoXMLResponse = (Envelope) unmarshaller.unmarshal(new StringReader(responseXML));
 
         return dataInfoXMLResponse.getBody().getAllDataInfoXMLResponse()
                 .getAllDataInfoXMLResult().getAllData().getMainIndicatorsVR();

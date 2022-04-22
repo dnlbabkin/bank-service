@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.xml.bind.JAXBException;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
@@ -29,7 +30,7 @@ public class PersonAccountService {
     private final RestTemplate template;
     private final ExternalProperties externalProperties;
 
-    public PersonAccount savePersonAccount(PersonAccountRequest personAccountRequest) throws JAXBException {
+    public PersonAccount savePersonAccount(PersonAccountRequest personAccountRequest) throws JAXBException, IOException {
         PersonAccount personAccount = new PersonAccount();
         String number = new CardNumberGenerator().generate(externalProperties.getCardnumber());
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.xml.bind.JAXBException;
+import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,7 +22,7 @@ public class CBRController {
 
 
     @PostMapping(value = "/account", produces = {MediaType.APPLICATION_XML_VALUE})
-    public AllData.MainIndicatorsVR invokeSoapClient() throws JAXBException {
+    public AllData.MainIndicatorsVR invokeSoapClient() throws JAXBException, IOException {
         AllData.MainIndicatorsVR env = soapClient.getCurrencyData();
         env.getCurrency().getUSD().getCurs();
 
@@ -29,7 +30,7 @@ public class CBRController {
     }
 
     @GetMapping(value = "/account/USD/", produces = {MediaType.APPLICATION_XML_VALUE})
-    public Account getUSD() throws JAXBException {
+    public Account getUSD() throws JAXBException, IOException {
         Account account = new Account();
 
         return accountService.saveUSD(account);
