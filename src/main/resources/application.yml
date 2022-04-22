@@ -29,10 +29,7 @@ management:
       show-details: always
     shutdown:
       enable: true
-cbr:
-  url: 'http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx'
-personaccount:
-  url: 'http://localhost:8080/person-account/'
-card:
-  number:
-    id: '2212'
+external:
+  cbr: 'http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx'
+  personaccount: 'http://localhost:8080/person-account/'
+  cardnumber: '2212'

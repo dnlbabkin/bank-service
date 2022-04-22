@@ -7,10 +7,10 @@ import com.example.bankservice.DTO.PersonAccountRequest;
 import com.example.bankservice.DTO.PersonInfo;
 import com.example.bankservice.Entity.Person;
 import com.example.bankservice.Entity.PersonAccount;
+import com.example.bankservice.ExternalProperties;
 import com.example.bankservice.Repository.PersonAccountRepository;
 import com.example.bankservice.Repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -27,16 +27,11 @@ public class PersonAccountService {
     private final CBRClient soapClient;
     private final PersonAccountRepository personAccountRepository;
     private final RestTemplate template;
-
-    @Value("${personaccount.url}")
-    private String url;
-
-    @Value("${card.number.id}")
-    private String cardNumberId;
+    private final ExternalProperties externalProperties;
 
     public PersonAccount savePersonAccount(PersonAccountRequest personAccountRequest) throws JAXBException {
         PersonAccount personAccount = new PersonAccount();
-        String number = new CardNumberGenerator().generate(cardNumberId);
+        String number = new CardNumberGenerator().generate(externalProperties.getCardnumber());
 
         AllData.MainIndicatorsVR envelope = soapClient.getCurrencyData();
 
@@ -69,7 +64,7 @@ public class PersonAccountService {
         Person person = personRepository.findPersonById(personId);
 
         PersonAccount personAccount = template
-                .getForObject(url + person.getId(), PersonAccount.class);
+                .getForObject(externalProperties.getPersonaccount() + person.getId(), PersonAccount.class);
 
         return new PersonInfo(person, personAccount);
     }

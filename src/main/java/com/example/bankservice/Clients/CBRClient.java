@@ -3,12 +3,11 @@ package com.example.bankservice.Clients;
 import com.example.bankservice.AllData;
 import com.example.bankservice.AllDataInfoXML;
 import com.example.bankservice.Envelope;
+import com.example.bankservice.ExternalProperties;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import javax.xml.bind.JAXBContext;
@@ -25,9 +24,7 @@ import java.util.Map;
 public class CBRClient extends WebServiceGatewaySupport {
 
     private final RestTemplate restTemplate;
-
-    @Value("${cbr.url}")
-    private String url;
+    private final ExternalProperties externalProperties;
 
     private HttpEntity<Map<String, Object>> makeEntity(String writer, HttpHeaders headers) {
         headers.setContentType(MediaType.TEXT_XML);
@@ -52,7 +49,7 @@ public class CBRClient extends WebServiceGatewaySupport {
 
     private ResponseEntity<String> makeRequest(String writer, HttpHeaders headers){
         ResponseEntity<String> response = restTemplate
-                .exchange(url, HttpMethod.POST, makeEntity(writer, headers), String.class);
+                .exchange(externalProperties.getCbr(), HttpMethod.POST, makeEntity(writer, headers), String.class);
 
         return response;
     }
