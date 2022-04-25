@@ -33,7 +33,7 @@ public class UpdateDBConfig {
 
         log.info("Finish writing Course: [" + account.getUsd()
                 + "] to Database. Entity[ Id = " + account.getId() + ", USD = "
-        + account.getUsd() + " ]");
+                + account.getUsd() + " ]");
 
     }
 }

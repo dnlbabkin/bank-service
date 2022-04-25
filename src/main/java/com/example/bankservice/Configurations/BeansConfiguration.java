@@ -1,4 +1,4 @@
-package com.example.bankservice.resttemplate;
+package com.example.bankservice.Configurations;
 
 import com.example.bankservice.Envelope;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -20,17 +20,17 @@ public class BeansConfiguration {
     }
 
     @Bean
-    public Marshaller makeMarshaller(Marshaller marshaller) throws JAXBException {
+    public Marshaller makeMarshaller() throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Envelope.class);
-        marshaller = jaxbContext.createMarshaller();
+        Marshaller marshaller = jaxbContext.createMarshaller();
 
         return marshaller;
     }
 
     @Bean
-    public Unmarshaller makeUnmarshaller(Unmarshaller unmarshaller) throws JAXBException {
-        JAXBContext jaxbContext = JAXBContext.newInstance();
-        unmarshaller = jaxbContext.createUnmarshaller();
+    public Unmarshaller makeUnmarshaller() throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Envelope.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
         return unmarshaller;
     }

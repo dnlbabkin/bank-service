@@ -13,8 +13,6 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.Result;
-import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Collections;
@@ -37,27 +35,14 @@ public class CBRClient extends WebServiceGatewaySupport {
         return entity;
     }
 
-//    private void makeMarshaller(Envelope envelope, StringWriter writer) throws JAXBException {
-//        JAXBContext jaxbContext = JAXBContext.newInstance(Envelope.class);
-//        Marshaller marshaller = jaxbContext.createMarshaller();
-//        marshaller.marshal(envelope, writer);
-//    }
-
-//    private Unmarshaller makeUnmarshaller() throws JAXBException {
-//        JAXBContext context = JAXBContext.newInstance(Envelope.class);
-//        Unmarshaller unmarshaller = context.createUnmarshaller();
-//
-//        return unmarshaller;
-//    }
-
-    private ResponseEntity<String> makeRequest(String writer, HttpHeaders headers){
+    private ResponseEntity<String> makeRequest(String writer, HttpHeaders headers) {
         ResponseEntity<String> response = restTemplate
                 .exchange(externalProperties.getCbr(), HttpMethod.POST, makeEntity(writer, headers), String.class);
 
         return response;
     }
 
-    public AllData.MainIndicatorsVR getCurrencyData() throws JAXBException, IOException {
+    public AllData.MainIndicatorsVR getCurrencyData() throws JAXBException {
         Envelope envelope = new Envelope();
         StringWriter writer = new StringWriter();
         HttpHeaders headers = new HttpHeaders();
