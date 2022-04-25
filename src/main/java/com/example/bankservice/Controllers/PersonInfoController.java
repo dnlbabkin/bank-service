@@ -15,7 +15,6 @@ public class PersonInfoController {
 
     private final PersonAccountService personAccountService;
 
-
     @GetMapping("/{id}")
     public PersonInfo getPersonAccount(@PathVariable("id") Integer personId) {
         return personAccountService.getPersonAccount(personId);

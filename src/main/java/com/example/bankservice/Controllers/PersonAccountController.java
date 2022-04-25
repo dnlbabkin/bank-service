@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.xml.bind.JAXBException;
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -19,7 +18,7 @@ public class PersonAccountController {
 
 
     @PostMapping("/")
-    public PersonAccount setAccount(@RequestBody PersonAccountRequest account) throws JAXBException, IOException {
+    public PersonAccount setAccount(@RequestBody PersonAccountRequest account) throws JAXBException {
         return personAccountService.savePersonAccount(account);
     }
 
@@ -36,6 +35,12 @@ public class PersonAccountController {
     @GetMapping("/account/{accountNumber}")
     public PersonAccount findAccountByAccountNumber(@PathVariable("accountNumber") String accountNumber) {
         return personAccountService.getAccountByAccountNumber(accountNumber);
+    }
+
+    @PutMapping("/update-account/{accountNumber}")
+    public PersonAccount updatePersonAccount(@PathVariable("accountNumber") String accountNumber,
+                                             @RequestBody PersonAccountRequest personAccountRequest) throws JAXBException {
+        return personAccountService.updatePersonAcсount(accountNumber, personAccountRequest);
     }
 }
  

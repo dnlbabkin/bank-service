@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.xml.bind.JAXBException;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
@@ -30,13 +29,9 @@ public class PersonAccountService {
     private final RestTemplate template;
     private final ExternalProperties externalProperties;
 
-    public PersonAccount savePersonAccount(PersonAccountRequest personAccountRequest) throws JAXBException, IOException {
+    public PersonAccount savePersonAccount(PersonAccountRequest personAccountRequest) throws JAXBException {
         PersonAccount personAccount = new PersonAccount();
         String number = new CardNumberGenerator().generate(externalProperties.getCardnumber());
-
-        AllData.MainIndicatorsVR envelope = soapClient.getCurrencyData();
-
-        BigDecimal usd = envelope.getCurrency().getUSD().getCurs();
 
         if (personAccountRequest.getInitialCurrency().equals("rub")) {
             personAccount.setAccountNumber(number);
@@ -49,7 +44,7 @@ public class PersonAccountService {
             personAccount.setCurrentCurrency(personAccountRequest.getInitialCurrency());
             personAccount.setCurrentAmount(personAccountRequest.getInitialPayment());
 
-            BigDecimal result = personAccountRequest.getInitialPayment().divide(usd, 2, RoundingMode.HALF_UP);
+            BigDecimal result = convertUsd(personAccountRequest);
             personAccount.setCurrentAmount(result);
             personAccountRepository.save(personAccount);
         }
@@ -76,5 +71,36 @@ public class PersonAccountService {
 
     public PersonAccount getAccountByAccountNumber(String accountNumber) {
         return personAccountRepository.findByAccountNumber(accountNumber);
+    }
+
+    public PersonAccount updatePersonAcсount(String accountNumber, PersonAccountRequest personAccountRequest) throws JAXBException {
+        PersonAccount personAccount = personAccountRepository.findByAccountNumber(accountNumber);
+        BigDecimal result = personAccountRequest.getInitialPayment();
+
+        if(personAccountRequest.getInitialCurrency().equals(personAccount.getCurrentCurrency())) {
+            personAccount.setCurrentAmount(personAccount.getCurrentAmount().add(result));
+        } else if(personAccountRequest.getInitialCurrency().equals("rub")) {
+            BigDecimal resultUsd = convertUsd(personAccountRequest);
+            personAccount.setCurrentAmount(personAccount.getCurrentAmount().add(resultUsd));
+        } else if(personAccountRequest.getInitialCurrency().equals("usd")){
+            BigDecimal resultRub = convertRub(personAccountRequest, result);
+            personAccount.setCurrentAmount(personAccount.getCurrentAmount().add(resultRub));
+        }
+
+        return personAccountRepository.save(personAccount);
+    }
+
+    private BigDecimal convertUsd(PersonAccountRequest personAccountRequest) throws JAXBException {
+        AllData.MainIndicatorsVR envelope = soapClient.getCurrencyData();
+        BigDecimal usd = envelope.getCurrency().getUSD().getCurs();
+        BigDecimal result = personAccountRequest.getInitialPayment().divide(usd, 2, RoundingMode.HALF_UP);
+
+        return result;
+    }
+
+    private BigDecimal convertRub(PersonAccountRequest personAccountRequest, BigDecimal result) {
+        BigDecimal resultRub = personAccountRequest.getInitialPayment().multiply(result);
+
+        return resultRub;
     }
 }
