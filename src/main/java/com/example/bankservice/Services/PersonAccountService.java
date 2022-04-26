@@ -29,6 +29,11 @@ public class PersonAccountService {
     private final RestTemplate template;
     private final ExternalProperties externalProperties;
 
+    private PersonAccount createRequest(Long id){
+        PersonAccount personAccount = template
+                .getForObject(externalProperties.getOperation() + id, PersonAccount.class);
+    }
+
     public PersonAccount savePersonAccount(PersonAccountRequest personAccountRequest) throws JAXBException {
         PersonAccount personAccount = new PersonAccount();
         String number = new CardNumberGenerator().generate(externalProperties.getCardnumber());
@@ -77,22 +82,22 @@ public class PersonAccountService {
         PersonAccount personAccount = personAccountRepository.findByAccountNumber(accountNumber);
         BigDecimal result = personAccountRequest.getInitialPayment();
 
-        if(personAccountRequest.getInitialCurrency().equals(personAccount.getCurrentCurrency())) {
+        if (personAccountRequest.getInitialCurrency().equals(personAccount.getCurrentCurrency())) {
             personAccount.setCurrentAmount(personAccount.getCurrentAmount().add(result));
-        } else if(personAccountRequest.getInitialCurrency().equals("rub")) {
-            BigDecimal resultUsd = convertUsd(personAccountRequest);
-            personAccount.setCurrentAmount(personAccount.getCurrentAmount().add(resultUsd));
-        } else if(personAccountRequest.getInitialCurrency().equals("usd")){
-            BigDecimal resultRub = convertRub(personAccountRequest, result);
-            personAccount.setCurrentAmount(personAccount.getCurrentAmount().add(resultRub));
+        } else if (personAccountRequest.getInitialCurrency().equals("rub")) {
+            result = convertUsd(personAccountRequest);
+            personAccount.setCurrentAmount(personAccount.getCurrentAmount().add(result));
+        } else if (personAccountRequest.getInitialCurrency().equals("usd")) {
+            result = convertRub(personAccountRequest, result);
+            personAccount.setCurrentAmount(personAccount.getCurrentAmount().add(result));
         }
 
         return personAccountRepository.save(personAccount);
     }
 
     private BigDecimal convertUsd(PersonAccountRequest personAccountRequest) throws JAXBException {
-        AllData.MainIndicatorsVR envelope = soapClient.getCurrencyData();
-        BigDecimal usd = envelope.getCurrency().getUSD().getCurs();
+        AllData.MainIndicatorsVR.Currency envelope = soapClient.getCurrencyData();
+        BigDecimal usd = envelope.getUSD().getCurs();
         BigDecimal result = personAccountRequest.getInitialPayment().divide(usd, 2, RoundingMode.HALF_UP);
 
         return result;

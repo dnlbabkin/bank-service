@@ -42,7 +42,7 @@ public class CBRClient extends WebServiceGatewaySupport {
         return response;
     }
 
-    public AllData.MainIndicatorsVR getCurrencyData() throws JAXBException {
+    public AllData.MainIndicatorsVR.Currency getCurrencyData() throws JAXBException {
         Envelope envelope = new Envelope();
         StringWriter writer = new StringWriter();
         HttpHeaders headers = new HttpHeaders();
@@ -55,6 +55,7 @@ public class CBRClient extends WebServiceGatewaySupport {
         Envelope dataInfoXMLResponse = (Envelope) unmarshaller.unmarshal(new StringReader(responseXML));
 
         return dataInfoXMLResponse.getBody().getAllDataInfoXMLResponse()
-                .getAllDataInfoXMLResult().getAllData().getMainIndicatorsVR();
+                .getAllDataInfoXMLResult().getAllData()
+                .getMainIndicatorsVR().getCurrency();
     }
 }

@@ -22,9 +22,9 @@ public class CBRController {
 
 
     @PostMapping(value = "/account", produces = {MediaType.APPLICATION_XML_VALUE})
-    public AllData.MainIndicatorsVR invokeSoapClient() throws JAXBException, IOException {
-        AllData.MainIndicatorsVR env = soapClient.getCurrencyData();
-        env.getCurrency().getUSD().getCurs();
+    public AllData.MainIndicatorsVR.Currency invokeSoapClient() throws JAXBException, IOException {
+        AllData.MainIndicatorsVR.Currency env = soapClient.getCurrencyData();
+        env.getUSD().getCurs();
 
         return env;
     }

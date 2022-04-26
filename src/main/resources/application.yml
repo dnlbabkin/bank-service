@@ -33,3 +33,4 @@ external:
   cbr: 'http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx'
   personaccount: 'http://localhost:8080/person-account/'
   cardnumber: '2212'
+  operation: 'http://www.localhost:8081/transfer/'

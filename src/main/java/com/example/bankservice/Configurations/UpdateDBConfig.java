@@ -25,9 +25,9 @@ public class UpdateDBConfig {
     @Scheduled(fixedRateString = "${sample.schedule.string}", initialDelayString = "${initialdelay.string}")
     public void updateDataBase() throws JAXBException, IOException {
         Account account = new Account();
-        AllData.MainIndicatorsVR envelope = soapClient.getCurrencyData();
+        AllData.MainIndicatorsVR.Currency envelope = soapClient.getCurrencyData();
 
-        account.setUsd(envelope.getCurrency().getUSD().getCurs());
+        account.setUsd(envelope.getUSD().getCurs());
 
         accountRepository.save(account);
 

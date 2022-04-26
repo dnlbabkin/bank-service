@@ -18,9 +18,9 @@ public class AccountService {
     private final CBRClient soapClient;
 
     public Account saveUSD(Account account) throws JAXBException, IOException {
-        AllData.MainIndicatorsVR envelope = soapClient.getCurrencyData();
+        AllData.MainIndicatorsVR.Currency envelope = soapClient.getCurrencyData();
 
-        account.setUsd(envelope.getCurrency().getUSD().getCurs());
+        account.setUsd(envelope.getUSD().getCurs());
 
         return accountRepository.save(account);
     }
