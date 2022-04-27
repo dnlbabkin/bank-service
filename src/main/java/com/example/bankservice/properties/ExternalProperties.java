@@ -11,7 +11,6 @@ public class ExternalProperties {
     private String cbr;
     private String personaccount;
     private String cardnumber;
-    private String operation;
 }
 
 

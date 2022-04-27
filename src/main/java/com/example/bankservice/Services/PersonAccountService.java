@@ -29,11 +29,6 @@ public class PersonAccountService {
     private final RestTemplate template;
     private final ExternalProperties externalProperties;
 
-    private PersonAccount createRequest(Long id){
-        PersonAccount personAccount = template
-                .getForObject(externalProperties.getOperation() + id, PersonAccount.class);
-    }
-
     public PersonAccount savePersonAccount(PersonAccountRequest personAccountRequest) throws JAXBException {
         PersonAccount personAccount = new PersonAccount();
         String number = new CardNumberGenerator().generate(externalProperties.getCardnumber());
